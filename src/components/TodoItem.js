@@ -4,21 +4,25 @@ import React, {Component} from 'react';
 import styles from "./TodoItem.module.css"
 
 class TodoItem extends Component {
-    state = {
-      editing: false,
-    }
+  state = {
+    editing: false,
+  }
 
-    handleEditing = () => {
-      this.setState({
-        editing: true,
-      })
+  handleEditing = () => {
+    this.setState({
+      editing: true,
+    })
+  }
+  
+  handleUpdatedDone = (event) => {
+    if (event.key === "Enter") {
+      this.setState({ editing: false })
     }
+  }
     
-    handleUpdatedDone = (event) => {
-      if (event.key === "Enter") {
-        this.setState({ editing: false })
-      }
-    }
+  componentWillUnmount() {
+    console.log("Cleaning up...")
+  }
 
   render(){
     let viewMode = {};
