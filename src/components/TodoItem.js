@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 // css styles module
 import styles from "./TodoItem.module.css"
@@ -33,6 +33,12 @@ const TodoItem = (props) => {
   } else {
     editMode.display = "none"
   }
+
+  useEffect(() => {
+    return () => {
+      console.log("Cleaning up...")
+    }
+  }, [])
   
   return (
     <li className={styles.item}>
