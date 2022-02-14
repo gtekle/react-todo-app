@@ -5,8 +5,9 @@ import { v4 as uuidv4 } from "uuid";
 import Header from './Header';
 import TodoList from './TodoList';
 import InputTodo from './InputTodo';
-import About from '../pages/About'
-import NotMatch from '../pages/NotMatch'
+import About from '../pages/About';
+import NotMatch from '../pages/NotMatch';
+import Navbar from "./Navbar";
 
 function getInitialTodos() {
   // getting stored items
@@ -79,26 +80,29 @@ const TodoContainer = () => {
   }, [todos])
 
   return( 
-    <Routes>
-      <Route path="/" element={
-        <React.Fragment>
-          <div className='container'>
-            <div className="inner">
-              <Header />
-              <InputTodo addTodoProps={addTodoItem} />
-              <TodoList
-                todos={todos}
-                handleChangeProps={handleChange}
-                deleteTodoProps={deleteTodo}
-                setUpdate={setUpdate}
-              />
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={
+          <React.Fragment>
+            <div className='container'>
+              <div className="inner">
+                <Header />
+                <InputTodo addTodoProps={addTodoItem} />
+                <TodoList
+                  todos={todos}
+                  handleChangeProps={handleChange}
+                  deleteTodoProps={deleteTodo}
+                  setUpdate={setUpdate}
+                />
+              </div>
             </div>
-          </div>
-        </React.Fragment>
-      } />
-      <Route path="/about" element={<About />} />
-      <Route path="*" element={<NotMatch />} />
-    </Routes>
+          </React.Fragment>
+        } />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotMatch />} />
+      </Routes>
+    </>
   )
 }
 
