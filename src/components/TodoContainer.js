@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 import Header from './Header';
@@ -63,8 +63,6 @@ const TodoContainer = () => {
   }
 
   useEffect(() => {
-    console.log("test run")
-    // getting stored items
     const temp = localStorage.getItem("todos")
     const loadedTodos = JSON.parse(temp)
 
@@ -74,7 +72,6 @@ const TodoContainer = () => {
   }, [])
 
   useEffect(() => {
-    // storing todos items
     const temp = JSON.stringify(todos)
     localStorage.setItem("todos", temp)
   }, [todos])
@@ -82,8 +79,8 @@ const TodoContainer = () => {
   return( 
     <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={
+      <Switch>
+        <Route path="/" exact>
           <React.Fragment>
             <div className='container'>
               <div className="inner">
@@ -98,10 +95,14 @@ const TodoContainer = () => {
               </div>
             </div>
           </React.Fragment>
-        } />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<NotMatch />} />
-      </Routes>
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="*">
+          <NotMatch />
+        </Route>
+      </Switch>
     </>
   )
 }
