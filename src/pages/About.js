@@ -8,7 +8,7 @@ const About = () => {
   console.log(url, path)
   
   return (
-    <div>
+    <div className="aboutChildNavBar">
       <ul>
         <li>
           <Link to={`${url}/about-app`}>About App</Link>
