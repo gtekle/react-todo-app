@@ -75,29 +75,23 @@ const TodoContainer = () => {
   return (
     <>
       <Navbar />
+      <Header />
       <Switch>
-        <Route path="/" exact>
-          <>
-            <div className="container">
-              <div className="inner">
-                <Header />
-                <InputTodo addTodoProps={addTodoItem} />
-                <TodoList
-                  todos={todos}
-                  handleChangeProps={handleChange}
-                  deleteTodoProps={deleteTodo}
-                  setUpdate={setUpdate}
-                />
-              </div>
+        <Route exact path="/">
+          <div className="container">
+            <div className="inner">
+              <InputTodo addTodoProps={addTodoItem} />
+              <TodoList
+                todos={todos}
+                handleChangeProps={handleChange}
+                deleteTodoProps={deleteTodo}
+                setUpdate={setUpdate}
+              />
             </div>
-          </>
+          </div>
         </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="*">
-          <NotMatch />
-        </Route>
+        <Route path="/about" component={About} />
+        <Route path="*" component={NotMatch} />
       </Switch>
     </>
   );
