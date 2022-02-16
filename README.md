@@ -10,7 +10,7 @@
 
 ## Live Demo
 
-- [live link](https://gtekle.github.io/react-todo-app/)
+- [live link](https://react-todo-app-tek.netlify.app/)
 
 ## Getting Started
 - Install Node.js ^14.0
